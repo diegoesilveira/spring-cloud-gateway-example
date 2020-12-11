@@ -1,0 +1,18 @@
+server:
+  port: 9090
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: microservice1
+          uri: http://localhost:8081/
+          predicates:
+            - Path=/product/**
+        - id: microservice2
+          uri: http://localhost:8080/
+          predicates:
+            - Path=/item/**
+
+# uri example microservice1  http://localhost:9090/product/***
+# uri example microservice2 http://localhost:9090/item/***
